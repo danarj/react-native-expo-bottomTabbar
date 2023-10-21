@@ -8,7 +8,7 @@ const Products = () => {
       <Text>Products</Text>
       <Image
         style={{ width: 32, height: 32 }}
-        source={require("../../assets/test.svg")}
+        source={require("../../assets/home.svg")}
       />
     </View>
   );

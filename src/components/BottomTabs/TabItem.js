@@ -1,5 +1,7 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import React, { useEffect } from "react";
+import { Image } from "expo-image";
+
 import Animated, {
   useAnimatedProps,
   useAnimatedStyle,
@@ -71,11 +73,12 @@ const TabItem = ({ label, icon, index, activeIndex, onTabPress }) => {
           hitSlop={{ top: 30, bottom: 30, left: 50, right: 50 }}
           onPress={onTabPress}
         >
-          <AnimatedIcon
+          {/* <AnimatedIcon
             name={icon}
             size={32}
             animatedProps={animatedIconProps}
-          />
+          /> */}
+          <Image style={{ width: 32, height: 32 }} source={icon} />
           <Text
             style={{
               fontSize: 10,

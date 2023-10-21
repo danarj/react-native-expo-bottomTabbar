@@ -27,15 +27,15 @@ export const CustomBottomTab = ({ state, descriptors, navigation }) => {
   const selectIcon = (routeName) => {
     switch (routeName) {
       case "Home":
-        return "home";
+        return require("../../../assets/home.svg");
       case "MyAccount":
-        return "account-outline";
+        return require("../../../assets/account.svg");
       case "Rules":
-        return "book";
+        return require("../../../assets/rules.svg");
       case "Competitions":
-        return "gamepad-variant-outline";
+        return require("../../../assets/competitions.svg");
       default:
-        return "home";
+        return require("../../../assets/home.svg");
     }
   };
   const animatedProps = useAnimatedProps(() => {
