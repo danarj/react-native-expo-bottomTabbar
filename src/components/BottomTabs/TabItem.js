@@ -7,12 +7,15 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import Feather from "react-native-vector-icons/Feather";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPathXCenterByIndex } from "./../../utils/Path";
 import usePath from "./../../hooks/usePath";
 import { SCREEN_WIDTH } from "./../../constants/Screen";
-const ICON_SIZE = 25;
+import colors from "../../colors";
+const ICON_SIZE = 36;
 const LABEL_WIDTH = SCREEN_WIDTH / 4;
-const AnimatedIcon = Animated.createAnimatedComponent(Feather);
+const AnimatedIcon = Animated.createAnimatedComponent(MaterialCommunityIcons);
+
 const TabItem = ({ label, icon, index, activeIndex, onTabPress }) => {
   const { curvedPaths } = usePath();
   const animatedActiveIndex = useSharedValue(activeIndex);
@@ -20,7 +23,7 @@ const TabItem = ({ label, icon, index, activeIndex, onTabPress }) => {
   const labelPosition = getPathXCenterByIndex(curvedPaths, index);
 
   const tabStyle = useAnimatedStyle(() => {
-    const translateY = animatedActiveIndex.value - 1 === index ? -35 : 20;
+    const translateY = animatedActiveIndex.value - 1 === index ? -32 : 30;
     const iconPositionX = iconPosition - index * ICON_SIZE;
     return {
       width: ICON_SIZE,
@@ -41,16 +44,16 @@ const TabItem = ({ label, icon, index, activeIndex, onTabPress }) => {
     };
   });
   const iconColor = useSharedValue(
-    activeIndex === index + 1 ? "white" : "rgba(128,128,128,0.8)"
+    activeIndex === index + 1 ? colors.background : colors.font75
   );
 
   //Adjust Icon color for this first render
   useEffect(() => {
     animatedActiveIndex.value = activeIndex;
     if (activeIndex === index + 1) {
-      iconColor.value = withTiming("white");
+      iconColor.value = withTiming(colors.background);
     } else {
-      iconColor.value = withTiming("rgba(128,128,128,0.8)");
+      iconColor.value = withTiming(colors.font75);
     }
   }, [activeIndex]);
 
@@ -59,7 +62,9 @@ const TabItem = ({ label, icon, index, activeIndex, onTabPress }) => {
   }));
   return (
     <>
-      <Animated.View style={[tabStyle]}>
+      <Animated.View
+        style={[tabStyle, { justifyContent: "center", alignItems: "center" }]}
+      >
         <Pressable
           testID={`tab${label}`}
           //Increasing touchable Area
@@ -68,14 +73,23 @@ const TabItem = ({ label, icon, index, activeIndex, onTabPress }) => {
         >
           <AnimatedIcon
             name={icon}
-            size={25}
+            size={32}
             animatedProps={animatedIconProps}
           />
+          <Text
+            style={{
+              fontSize: 10,
+              color: colors.background,
+              textAlign: "center",
+            }}
+          >
+            {label}
+          </Text>
         </Pressable>
       </Animated.View>
-      <Animated.View style={[labelContainerStyle, styles.labelContainer]}>
+      {/* <Animated.View style={[labelContainerStyle, styles.labelContainer]}>
         <Text style={styles.label}>{label}</Text>
-      </Animated.View>
+      </Animated.View> */}
     </>
   );
 };
@@ -89,7 +103,7 @@ const styles = StyleSheet.create({
     width: LABEL_WIDTH,
   },
   label: {
-    color: "rgba(128,128,128,0.8)",
+    color: colors.font75,
     fontSize: 17,
   },
 });

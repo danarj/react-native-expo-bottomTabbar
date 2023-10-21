@@ -6,7 +6,7 @@ import { parse } from "react-native-redash";
 
 const NUM_TABS = 4;
 const SCALE = 0.7;
-const TAB_BAR_HEIGHT = 64;
+const TAB_BAR_HEIGHT = 124;
 
 const generateTabShapePath = (position, adjustedHeight) => {
   const adjustedWidth = SCREEN_WIDTH / NUM_TABS;
@@ -16,10 +16,10 @@ const generateTabShapePath = (position, adjustedHeight) => {
   const tab = lineGenerator([
     [tabX - 100 * SCALE, 0],
     [tabX - (65 + 35) * SCALE, 0],
-    [tabX - (50 - 10) * SCALE, -6 * SCALE],
-    [tabX - (50 - 15) * SCALE, (adjustedHeight - 14) * SCALE],
-    [tabX + (50 - 15) * SCALE, (adjustedHeight - 14) * SCALE],
-    [tabX + (50 - 10) * SCALE, -6 * SCALE],
+    [tabX - (60 - 10) * SCALE, -6 * SCALE],
+    [tabX - (50 - 15) * SCALE, (adjustedHeight - 85) * SCALE],
+    [tabX + (50 - 15) * SCALE, (adjustedHeight - 85) * SCALE],
+    [tabX + (60 - 10) * SCALE, -6 * SCALE],
     [tabX + (65 + 35) * SCALE, 0],
     [tabX + 100 * SCALE, 0],
   ]);

@@ -14,6 +14,7 @@ import usePath from "./../../hooks/usePath";
 import { getPathXCenter } from "../../utils/Path";
 import TabItem from "./TabItem";
 import AnimatedCircle from "./AnimatedCircle";
+import colors from "../../colors";
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 export const CustomBottomTab = ({ state, descriptors, navigation }) => {
@@ -25,14 +26,14 @@ export const CustomBottomTab = ({ state, descriptors, navigation }) => {
   };
   const selectIcon = (routeName) => {
     switch (routeName) {
-      case "Products":
+      case "Home":
         return "home";
-      case "Cart":
-        return "shopping-bag";
-      case "Favourites":
-        return "star";
-      case "Profile":
-        return "user";
+      case "MyAccount":
+        return "account-outline";
+      case "Rules":
+        return "book";
+      case "Competitions":
+        return "gamepad-variant-outline";
       default:
         return "home";
     }
@@ -57,7 +58,7 @@ export const CustomBottomTab = ({ state, descriptors, navigation }) => {
   return (
     <View style={styles.tabBarContainer}>
       <Svg width={SCREEN_WIDTH} height={tHeight} style={styles.shadowMd}>
-        <AnimatedPath fill={"white"} animatedProps={animatedProps} />
+        <AnimatedPath fill={colors.primary} animatedProps={animatedProps} />
       </Svg>
       <AnimatedCircle circleX={circleXCoordinate} />
       <View

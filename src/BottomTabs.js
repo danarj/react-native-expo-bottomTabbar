@@ -11,31 +11,33 @@ import CustomBottomTab from "./components/BottomTabs/CustomBottomTab";
 const Tab = createBottomTabNavigator();
 function BottomTabs(props) {
   return (
-    <Tab.Navigator tabBar={(props) => <CustomBottomTab {...props} />}>
+    <Tab.Navigator
+      tabBar={(props) => <CustomBottomTab {...props} initialRouteName="Home" />}
+    >
       <Tab.Group
         screenOptions={{
           headerShown: false,
         }}
       >
         <Tab.Screen
-          options={{ tabBarLabel: "Home" }}
-          name="Products"
-          component={Products}
-        />
-        <Tab.Screen
-          options={{ tabBarLabel: "Cart" }}
-          name="Cart"
+          options={{ tabBarLabel: "حسابى" }}
+          name="MyAccount"
           component={Cart}
         />
         <Tab.Screen
-          options={{ tabBarLabel: "Favourites" }}
-          name="Favourites"
+          options={{ tabBarLabel: "الأحكام" }}
+          name="Rules"
           component={Favourites}
         />
         <Tab.Screen
-          options={{ tabBarLabel: "Profile" }}
-          name="Profile"
+          options={{ tabBarLabel: "مسابقاتى" }}
+          name="Competitions"
           component={Profile}
+        />
+        <Tab.Screen
+          options={{ tabBarLabel: "الرئيسيه" }}
+          name="Home"
+          component={Products}
         />
       </Tab.Group>
     </Tab.Navigator>
